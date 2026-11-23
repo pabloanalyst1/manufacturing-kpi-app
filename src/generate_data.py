@@ -99,7 +99,7 @@ def _rainy(month: int) -> bool:
 def shift_calendar(start: str = START_DATE, end: str = END_DATE) -> pd.DatetimeIndex:
     """Working days: Monday to Saturday, excluding plant holidays."""
     days = pd.date_range(start, end, freq="D")
-    return days[(days.dayofweek < 6) & ~days.strftime("%Y-%m-%d").isin(PLANT_HOLIDAYS)]
+    return days[(days.day_of_week < 6) & ~days.strftime("%Y-%m-%d").isin(PLANT_HOLIDAYS)]
 
 
 def generate_reference_tables() -> dict[str, pd.DataFrame]:
