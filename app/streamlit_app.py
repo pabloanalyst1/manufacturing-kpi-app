@@ -1,8 +1,9 @@
 """Plant KPI app: OEE, losses, downtime and scrap with date and line filters.
 
-Run the pipeline first, then:
+Run locally:
     streamlit run app/streamlit_app.py
-Set KPI_DB_PATH to point the app at another warehouse file.
+If data/warehouse.db does not exist yet, the app runs the pipeline once on start (this is what happens on
+Streamlit Community Cloud). Set KPI_DB_PATH to point the app at another warehouse file instead.
 """
 from __future__ import annotations
 
@@ -34,10 +35,26 @@ def load(db_path: str):
     return kpi.load_tables(Path(db_path))
 
 
-db_path = Path(os.environ.get("KPI_DB_PATH", PipelineConfig().db_path))
-if not db_path.exists():
-    st.error("The warehouse does not exist yet. Run `python run_pipeline.py` first, then reload this page.")
-    st.stop()
+@st.cache_resource(show_spinner="First start: building the warehouse (about 10 seconds)...")
+def build_warehouse(db_path: str) -> str:
+    """Run the pipeline once when the app starts without a warehouse (e.g. on Streamlit Community Cloud).
+
+    MongoDB is not available there, so the documents are flattened in Python (same result, tested in CI)."""
+    from run_pipeline import run
+
+    run(PipelineConfig())
+    return db_path
+
+
+if "KPI_DB_PATH" in os.environ:  # an explicit warehouse file: use it as is
+    db_path = Path(os.environ["KPI_DB_PATH"])
+    if not db_path.exists():
+        st.error("The warehouse does not exist yet. Run `python run_pipeline.py` first, then reload this page.")
+        st.stop()
+else:  # default location: build it on first start if needed
+    db_path = PipelineConfig().db_path
+    if not db_path.exists():
+        build_warehouse(str(db_path))
 
 data = load(str(db_path))
 shifts_all = data["shifts"]

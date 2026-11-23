@@ -110,7 +110,8 @@ result table. The queries live in [`sql/analysis/`](sql/analysis).
 streamlit run app/streamlit_app.py
 ```
 
-Filter by date range and line; the app shows the OEE tiles, monthly OEE by line, the six big losses, the
+If the warehouse does not exist yet, the app runs the pipeline once on start (about 10 seconds), so it also
+deploys as is to Streamlit Community Cloud. Filter by date range and line; the app shows the OEE tiles, monthly OEE by line, the six big losses, the
 downtime Pareto and scrap by defect. All calculations live in [`src/kpi.py`](src/kpi.py), and a test checks
 they give the same answers as the SQL marts. The CSV exports in `exports/` also feed Tableau or Looker Studio.
 
