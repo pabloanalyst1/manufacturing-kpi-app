@@ -7,6 +7,8 @@ them, and a **Streamlit app** lets the plant manager filter OEE, losses, downtim
 The analysis answers the questions every plant meeting asks: **where is capacity being lost, which machine
 is the problem, did the improvement program work, and what is it all worth?**
 
+**[▶ Live demo: manufacturing-kpi-app.streamlit.app](https://manufacturing-kpi-app.streamlit.app)** · no install needed (if the app is asleep, click *Wake up* and wait ~30 seconds)
+
 **Stack:** Python (pandas) · MongoDB (aggregation pipelines) · SQL (SQLite: CTEs, window functions, recursive CTE) · Streamlit · matplotlib · pytest · GitHub Actions
 
 ![Where planned production time goes](docs/images/oee_losses.png)
@@ -105,6 +107,8 @@ result table. The queries live in [`sql/analysis/`](sql/analysis).
 | Changeover matrix (from SKU -> to SKU) | self-describing pairs, conditional `AVG()` |
 
 ## The app
+
+**Live:** [manufacturing-kpi-app.streamlit.app](https://manufacturing-kpi-app.streamlit.app) (hosted on Streamlit Community Cloud). To run it locally:
 
 ```bash
 streamlit run app/streamlit_app.py
@@ -253,7 +257,7 @@ set `MONGO_URI` or pass `--mongo-uri`.
 
 ## Next steps
 
-- Tableau / Looker Studio dashboard on the exported marts, and deploying the app to Streamlit Community Cloud.
+- Tableau / Looker Studio dashboard on the exported marts.
 - Production plan vs actual (schedule attainment) from the ERP.
 - A predictive maintenance model for L01 (time to next failure from its stop history).
 
