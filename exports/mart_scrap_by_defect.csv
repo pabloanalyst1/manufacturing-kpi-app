@@ -1,22 +1,22 @@
 process,line_id,defect,scrap_units,scrap_cost_gtq,share_of_line_scrap
-Injection molding,L01,Splay / bubbles,2002245,622219.0,0.3505
-Injection molding,L01,Short shot,1160007,357189.0,0.2031
-Injection molding,L01,Out of spec dimensions,1159066,357148.0,0.2029
-Injection molding,L01,Black specks,696169,214537.0,0.1219
-Injection molding,L01,Flash,694308,213722.0,0.1216
-Injection molding,L02,Splay / bubbles,2169231,675490.0,0.3527
-Injection molding,L02,Short shot,1244986,381844.0,0.2024
-Injection molding,L02,Out of spec dimensions,1244134,381495.0,0.2023
-Injection molding,L02,Black specks,745932,228766.0,0.1213
-Injection molding,L02,Flash,745883,228772.0,0.1213
-Blow molding,L03,Thin wall,1296971,509830.0,0.3
-Blow molding,L03,Off-center base,1080536,424629.0,0.25
-Blow molding,L03,Haze,1079617,424210.0,0.2498
-Blow molding,L03,Leaker,865532,340190.0,0.2002
-Blow molding,L04,Thin wall,1201269,489338.0,0.2998
-Blow molding,L04,Off-center base,1002450,408411.0,0.2501
-Blow molding,L04,Haze,1002422,408200.0,0.2501
-Blow molding,L04,Leaker,801274,326608.0,0.1999
-Compression molding,L05,Liner defect,2140772,108712.0,0.3501
-Compression molding,L05,Short shot,2140320,108686.0,0.35
-Compression molding,L05,Flash,1834374,93166.0,0.3
+Injection molding,L01,Splay / bubbles,1897123,575741.0,0.332
+Injection molding,L01,Short shot,1167513,356163.0,0.2043
+Injection molding,L01,Out of spec dimensions,1133802,342218.0,0.1984
+Injection molding,L01,Flash,795897,243915.0,0.1393
+Injection molding,L01,Black specks,720157,223433.0,0.126
+Injection molding,L02,Splay / bubbles,2081510,627915.0,0.3309
+Injection molding,L02,Short shot,1288034,379190.0,0.2048
+Injection molding,L02,Out of spec dimensions,1272282,383166.0,0.2022
+Injection molding,L02,Flash,828357,251027.0,0.1317
+Injection molding,L02,Black specks,820463,246605.0,0.1304
+Blow molding,L03,Thin wall,1215296,485688.0,0.2887
+Blow molding,L03,Haze,1060455,425004.0,0.252
+Blow molding,L03,Off-center base,1060341,429168.0,0.2519
+Blow molding,L03,Leaker,872726,354084.0,0.2074
+Blow molding,L04,Thin wall,1194814,477292.0,0.2875
+Blow molding,L04,Haze,1062309,423272.0,0.2557
+Blow molding,L04,Off-center base,1029528,407720.0,0.2478
+Blow molding,L04,Leaker,868606,344595.0,0.209
+Compression molding,L05,Short shot,2077111,107231.0,0.3469
+Compression molding,L05,Liner defect,2064609,106152.0,0.3448
+Compression molding,L05,Flash,1845919,95638.0,0.3083

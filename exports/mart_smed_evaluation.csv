@@ -1,5 +1,5 @@
 smed_group,smed_period,lines,shifts,changeovers,avg_changeover_minutes,changeover_share_of_planned,availability,oee
-Comparison,Post,2,1518,310,77.7,0.0361,0.8778,0.7437
-Comparison,Pre,2,1836,361,78.4,0.035,0.8636,0.7309
-Pilot,Post,2,1518,280,48.4,0.0203,0.8196,0.6273
-Pilot,Pre,2,1835,354,82.5,0.0363,0.8074,0.6189
+Comparison,Post,2,1516,288,76.4,0.0329,0.884,0.7483
+Comparison,Pre,2,1833,362,80.0,0.0358,0.872,0.7376
+Pilot,Post,2,1517,279,48.8,0.0204,0.8092,0.6189
+Pilot,Pre,2,1835,355,82.4,0.0362,0.7975,0.611

@@ -44,3 +44,16 @@ def test_messy_extract_has_the_issues_staging_fixes():
     assert any(isinstance(p.get("good"), str) and "," in p["good"] for d in docs for p in d["production"])
     assert tables["resin_lots"]["lot_id"].duplicated().any()
     assert tables["resin_lots"]["supplier"].nunique() > 2                       # supplier spelled several ways
+
+
+def _fingerprint(docs, tables) -> str:
+    import hashlib
+    import json
+    payload = json.dumps(docs, sort_keys=True) + tables["resin_lots"].to_csv(index=False)
+    return hashlib.sha256(payload.encode()).hexdigest()
+
+
+def test_data_is_identical_on_every_machine():
+    """Golden fingerprint of the default extract. If this fails on your machine, the simulated data (and the
+    README numbers) differ there: the generator must only use platform-independent draws."""
+    assert _fingerprint(*generate_all()) == "6aa720c4ccbf3ed14ef8aa2b9bdcd17b7c8103a39e342abb367d33e9a0bb191d"

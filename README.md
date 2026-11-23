@@ -29,58 +29,58 @@ three 8-hour shifts, Monday to Saturday. Management needs to answer:
 
 ## Key findings
 
-*Default run: 8,382 line-shifts, 65,229 stops and 9,846 production records, January 2025 - October 2026.*
+*Default run: 8,377 line-shifts, 65,234 stops and 9,806 production records, January 2025 - October 2026.*
 
 | KPI | 2026 YTD | Same period 2025 | Change |
 |---|---|---|---|
-| **OEE** | **69.4%** | 68.0% | +1.4 pts |
-| Availability | 85.5% | 83.8% | +1.7 pts |
-| Performance | 82.9% | 82.8% | +0.1 pts |
-| Quality | 98.1% | 98.2% | -0.1 pts |
-| Unplanned downtime | 4,053 h | 4,528 h | -10.5% |
-| Average changeover | 63 min | 78 min | -19% |
+| **OEE** | **69.0%** | 68.0% | +1.1 pts |
+| Availability | 85.1% | 83.8% | +1.3 pts |
+| Performance | 82.8% | 82.8% | 0.0 pts |
+| Quality | 98.10% | 98.15% | -0.05 pts |
+| Unplanned downtime | 4,179 h | 4,548 h | -8.1% |
+| Average changeover | 63 min | 80 min | -21% |
 
 *World-class OEE is about 85%. Ratios are always computed from summed minutes and units, never averaged.*
 
 **Where capacity is lost**
-- **Plant OEE is 68.8%.** The two largest losses are **reduced speed (11.5% of planned time)**, because every
-  line runs below its rated speed, and **breakdowns (9.5%)**. Scrap costs only 1.5 points of OEE.
+- **Plant OEE is 68.6%.** The two largest losses are **reduced speed (11.5% of planned time)**, because every
+  line runs below its rated speed, and **breakdowns (9.7%)**. Scrap costs only 1.5 points of OEE.
 - **Four causes make 81% of unplanned downtime:** mechanical failures (37% alone), changeovers, electrical
   failures and mold problems. Long material shortages during the **August-September 2025 port congestion** pulled
-  plant OEE down to 63-64% for two months.
+  plant OEE down to about 64% for two months.
 
 **The old injection press (L01) is the bottleneck**
-- **L01's OEE is 54.0%**, 16 points below the next-worst line (L03, 70.5%). Breakdowns take 17% of its planned time.
-- It **breaks down every 3.7-4.6 run hours**, against 11-13 hours for the newer press of the same model (L02), and
-  its MTBF has fallen from 5.4 to 3.9 hours since early 2025: the machine is getting worse.
-- Bringing L01 up to the best line's OEE would be worth about **Q2.2M a year** in contribution margin. That is
+- **L01's OEE is 52.9%**, 17 points below the next-worst line (L03, 70.0%). Breakdowns take 18% of its planned time.
+- It **breaks down every 3.4-4.5 run hours**, against 11-15 hours for the newer press of the same model (L02), and
+  its MTBF has fallen from about 4.3 hours in early 2025 to 3.4 in the last two quarters: the machine is getting worse.
+- Bringing L01 up to the best line's OEE would be worth about **Q2.4M a year** in contribution margin. That is
   the size of the business case for an overhaul or a replacement press.
 
 ![Reliability](docs/images/reliability_mtbf.png)
 
 **SMED works; roll it out**
-- On the pilot lines the average changeover fell from **82.5 to 48.4 minutes (-41%)**, while the comparison
-  lines stayed flat (78.4 -> 77.7). The **difference-in-differences** estimate is **-33 minutes per changeover**.
-- Changeovers went from 3.6% to 2.0% of planned time (-1.7 points vs comparison), giving **189 hours** back to
-  production since January, worth about **Q0.47M a year** on the two pilot lines.
+- On the pilot lines the average changeover fell from **82.4 to 48.8 minutes (-41%)**, while the comparison
+  lines barely moved (80.0 -> 76.4). The **difference-in-differences** estimate is **-30 minutes per changeover**.
+- Changeovers went from 3.6% to 2.0% of planned time (-1.3 points vs comparison), giving **144 hours** back to
+  production since January, worth about **Q0.36M a year** on the two pilot lines.
 - The gain does not show fully in L01's OEE because its rising breakdowns ate most of it, another reason to fix L01.
-- **Recommendation:** extend SMED to L02 and L04 (similar changeover load, worth roughly another Q0.45M a year).
+- **Recommendation:** extend SMED to L02 and L04 (similar changeover load, worth roughly another Q0.4M a year).
 
 ![SMED](docs/images/smed_changeovers.png)
 
 **The cheaper resin raises scrap, but still pays**
-- PET resin from *Resinas del Golfo* is **6% cheaper** (Q10.68 vs Q11.41 per kg) but arrives with twice the
-  moisture (58 vs 29 ppm). On the injection presses it **raises scrap from 2.4% to 4.2%**, almost all of it
+- PET resin from *Resinas del Golfo* is **6% cheaper** (Q10.72 vs Q11.39 per kg) but arrives with twice the
+  moisture (59 vs 30 ppm). On the injection presses it **raises scrap from 2.4% to 4.1%**, almost all of it
   *splay / bubbles*, the classic moisture defect.
-- Over the period it saved **Q2.86M in resin** and cost **Q0.82M in extra scrap**: still a net saving of about Q2M.
+- Over the period it saved **Q2.81M in resin** and cost **Q0.84M in extra scrap**: still a net saving of about Q2M.
 - **Recommendation:** keep the supplier, but add a moisture limit to the contract and dry its lots longer,
   rather than switching suppliers.
 
 ![Supplier scrap](docs/images/supplier_scrap.png)
 
 **Other drivers**
-- The **night shift** is 1.5-3 OEE points lower on every line and scraps about 30% more.
-- Product runs that start after a changeover scrap more (injection 3.8% vs 3.0%), the cost of start-up.
+- The **night shift** is up to 3 OEE points lower on every line and scraps about 30% more.
+- Product runs that start after a changeover scrap more (injection 3.9% vs 3.0%), the cost of start-up.
 
 | OEE by line | Downtime Pareto |
 |---|---|
@@ -160,18 +160,18 @@ Real MES extracts are never clean, so the simulator adds the problems the stagin
 | Problem in the raw extract | Rows affected | Fix in `01_staging.sql` |
 |---|---|---|
 | Two document layouts (firmware v1 before mid-2025, v2 after) | 1,956 v1 reports | Field names lined up in the aggregation pipelines |
-| Counts as text with thousands separators (`"180,000"`) | 2,300 production rows | Cast to integers |
-| Line ids typed five ways (`Línea 1`, `L-01`, `l01 `, `LINE 1`, `L01`) | 2,577 reports | Normalized to `L01` |
-| Interim report sent before the shift closed, then the final one | 42 shifts | Latest copy kept (`ROW_NUMBER`) |
-| SKU codes in lower case or with spaces | 519 rows | `UPPER(TRIM())` |
-| Legacy v1 downtime codes (`MECHANICAL`, `SETUP`) and inconsistent case | 16,032 + 3,893 stops | Mapped through `ref_downtime_reasons` |
+| Counts as text with thousands separators (`"180,000"`) | 2,267 production rows | Cast to integers |
+| Line ids typed five ways (`Línea 1`, `L-01`, `l01 `, `LINE 1`, `L01`) | 2,593 reports | Normalized to `L01` |
+| Interim report sent before the shift closed, then the final one | 46 shifts | Latest copy kept (`ROW_NUMBER`) |
+| SKU codes in lower case or with spaces | 507 rows | `UPPER(TRIM())` |
+| Legacy v1 downtime codes (`MECHANICAL`, `SETUP`) and inconsistent case | 16,062 + 3,873 stops | Mapped through `ref_downtime_reasons` |
 | No reason entered (`???`) | 127 stops | Kept as *Unclassified* (check: < 1%) |
 | Two timestamp formats (`dd/mm/yyyy hh:mm` and ISO) | all v1 stops | Parsed to one format |
-| The same stop logged twice | 265 stops | Duplicate removed |
-| Stop that ends before it starts (clock error) | 68 stops | Moved to `stg_rejected_downtime_events` |
-| Stop still open at the end of the shift | 186 stops | Clipped to the shift end |
-| 32-bit counter overflow (4.29 billion units) | 3 reports | Moved to `stg_rejected_shift_reports` |
-| Resin lot not scanned | 20 shifts | Set to `UNKNOWN` (check: < 1%) |
+| The same stop logged twice | 246 stops | Duplicate removed |
+| Stop that ends before it starts (clock error) | 74 stops | Moved to `stg_rejected_downtime_events` |
+| Stop still open at the end of the shift | 242 stops | Clipped to the shift end |
+| 32-bit counter overflow (4.29 billion units) | 8 reports | Moved to `stg_rejected_shift_reports` |
+| Resin lot not scanned | 25 shifts | Set to `UNKNOWN` (check: < 1%) |
 | ERP: supplier spelled three ways, mixed date formats, duplicated lot rows | 222 lots | Normalized and deduplicated |
 
 ### The data
@@ -197,15 +197,16 @@ brew tap mongodb/brew && brew install mongodb-community && brew services start m
 # docker run -d --name mongo -p 27017:27017 mongo:7
 
 python run_pipeline.py               # builds data/warehouse.db and exports/*.csv (~6 seconds)
-python -m pytest                     # 21 tests (MongoDB and app tests skip if unavailable)
+python -m pytest                     # 22 tests (MongoDB and app tests skip if unavailable)
 python scripts/run_case_study.py     # refreshes docs/sql_case_study.md
 python scripts/make_readme_charts.py # refreshes the README charts
 streamlit run app/streamlit_app.py   # the app
 ```
 
-Package versions are pinned in `requirements.txt`: the simulator draws random numbers through numpy and pandas,
-so other versions can produce slightly different data. With the pinned versions and the default seed you get
-exactly the numbers in this README (8,382 line-shifts).
+The simulated data is identical on every machine (Intel, Apple Silicon, Linux). Each line-shift has its own
+random stream, and the generator avoids samplers whose last digit depends on the processor. A test pins a
+fingerprint of the default extract, so with the default seed you get exactly the numbers in this README
+(8,377 line-shifts).
 
 Without MongoDB the pipeline logs a warning and flattens the documents in Python. To use another server,
 set `MONGO_URI` or pass `--mongo-uri`.

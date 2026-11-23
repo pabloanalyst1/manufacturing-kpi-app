@@ -1,22 +1,22 @@
 process,driver,level,total_units,scrap_units,scrap_rate
-Blow molding,Shift,A,162860519,2467418,0.0152
-Blow molding,Shift,B,170281344,2631847,0.0155
-Blow molding,Shift,C,166502005,3230806,0.0194
-Compression molding,Shift,A,171410167,1804765,0.0105
-Compression molding,Shift,B,182263897,1942500,0.0107
-Compression molding,Shift,C,175665950,2368201,0.0135
-Injection molding,Shift,A,127674080,3551323,0.0278
-Injection molding,Shift,B,133479939,3641358,0.0273
-Injection molding,Shift,C,129145801,4669280,0.0362
-Blow molding,After a changeover,No,453550904,7207257,0.0159
-Blow molding,After a changeover,Yes,46092964,1122814,0.0244
-Compression molding,After a changeover,No,509675532,5747946,0.0113
-Compression molding,After a changeover,Yes,19664482,367520,0.0187
-Injection molding,After a changeover,No,364917558,10889174,0.0298
-Injection molding,After a changeover,Yes,25382262,972787,0.0383
-Blow molding,Rainy season,No,228492102,3799854,0.0166
-Blow molding,Rainy season,Yes (May-Oct),271151766,4530217,0.0167
-Compression molding,Rainy season,No,236153830,2709170,0.0115
-Compression molding,Rainy season,Yes (May-Oct),293186184,3406296,0.0116
-Injection molding,Rainy season,No,174218908,5023922,0.0288
-Injection molding,Rainy season,Yes (May-Oct),216080912,6838039,0.0316
+Blow molding,Shift,A,163903391,2497163,0.0152
+Blow molding,Shift,B,172372225,2621267,0.0152
+Blow molding,Shift,C,166958708,3245645,0.0194
+Compression molding,Shift,A,170364646,1822715,0.0107
+Compression molding,Shift,B,177132139,1865573,0.0105
+Compression molding,Shift,C,170674101,2299351,0.0135
+Injection molding,Shift,A,127886326,3572524,0.0279
+Injection molding,Shift,B,132709948,3673822,0.0277
+Injection molding,Shift,C,129754567,4758792,0.0367
+Blow molding,After a changeover,No,456404895,7219695,0.0158
+Blow molding,After a changeover,Yes,46829429,1144380,0.0244
+Compression molding,After a changeover,No,499247014,5623584,0.0113
+Compression molding,After a changeover,Yes,18923872,364055,0.0192
+Injection molding,After a changeover,No,365408119,11037360,0.0302
+Injection molding,After a changeover,Yes,24942722,967778,0.0388
+Blow molding,Rainy season,No,223669038,3745831,0.0167
+Blow molding,Rainy season,Yes (May-Oct),279565286,4618244,0.0165
+Compression molding,Rainy season,No,230492190,2673099,0.0116
+Compression molding,Rainy season,Yes (May-Oct),287678696,3314540,0.0115
+Injection molding,Rainy season,No,174541407,5293338,0.0303
+Injection molding,Rainy season,Yes (May-Oct),215809434,6711800,0.0311

@@ -47,28 +47,28 @@ ORDER BY month_start;
 
 | month | availability_pct | performance_pct | quality_pct | oee_pct | change_vs_prev_month_pts |
 | --- | --- | --- | --- | --- | --- |
-| 2025-01 | 86.3 | 83.1 | 98.1 | 70.2 |  |
-| 2025-02 | 85.7 | 82.9 | 98.3 | 69.6 | -0.5 |
-| 2025-03 | 85.3 | 82.9 | 98.2 | 69.4 | -0.3 |
-| 2025-04 | 83.7 | 82.6 | 98.1 | 67.7 | -1.7 |
-| 2025-05 | 84.4 | 82.9 | 98.1 | 68.5 | 0.8 |
-| 2025-06 | 85.0 | 82.9 | 98.2 | 69.0 | 0.5 |
-| 2025-07 | 84.8 | 82.7 | 98.2 | 68.8 | -0.3 |
-| 2025-08 | 79.0 | 82.6 | 98.2 | 63.9 | -4.8 |
-| 2025-09 | 78.6 | 82.2 | 98.1 | 63.2 | -0.7 |
-| 2025-10 | 85.5 | 83.2 | 98.2 | 69.7 | 6.5 |
-| 2025-11 | 86.3 | 82.9 | 98.2 | 70.1 | 0.3 |
-| 2025-12 | 84.1 | 83.0 | 98.3 | 68.5 | -1.5 |
-| 2026-01 | 84.7 | 82.9 | 98.3 | 68.9 | 0.4 |
-| 2026-02 | 87.3 | 83.0 | 98.1 | 70.9 | 2.0 |
-| 2026-03 | 86.0 | 83.0 | 98.3 | 70.0 | -0.9 |
-| 2026-04 | 85.3 | 82.9 | 98.1 | 69.2 | -0.8 |
-| 2026-05 | 84.2 | 82.9 | 97.9 | 68.2 | -1.0 |
-| 2026-06 | 86.9 | 82.9 | 98.1 | 70.4 | 2.2 |
-| 2026-07 | 86.5 | 82.9 | 97.9 | 70.0 | -0.4 |
-| 2026-08 | 84.6 | 82.8 | 98.0 | 68.5 | -1.5 |
-| 2026-09 | 85.6 | 82.9 | 98.3 | 69.6 | 1.1 |
-| 2026-10 | 84.4 | 82.8 | 98.2 | 68.5 | -1.1 |
+| 2025-01 | 85.6 | 83.1 | 98.1 | 69.6 |  |
+| 2025-02 | 85.4 | 82.8 | 98.2 | 69.3 | -0.3 |
+| 2025-03 | 85.2 | 82.9 | 98.2 | 69.2 | -0.1 |
+| 2025-04 | 85.5 | 82.9 | 98.0 | 69.3 | 0.1 |
+| 2025-05 | 83.6 | 82.6 | 98.2 | 67.6 | -1.7 |
+| 2025-06 | 85.2 | 82.8 | 98.2 | 69.1 | 1.4 |
+| 2025-07 | 84.1 | 82.6 | 98.1 | 68.0 | -1.1 |
+| 2025-08 | 79.3 | 82.7 | 98.2 | 64.3 | -3.7 |
+| 2025-09 | 79.1 | 82.7 | 98.3 | 64.1 | -0.1 |
+| 2025-10 | 85.0 | 83.0 | 98.1 | 69.1 | 4.9 |
+| 2025-11 | 84.6 | 82.7 | 98.3 | 68.7 | -0.4 |
+| 2025-12 | 86.7 | 83.1 | 98.1 | 70.6 | 1.8 |
+| 2026-01 | 85.3 | 82.7 | 98.1 | 69.1 | -1.5 |
+| 2026-02 | 85.6 | 82.9 | 98.1 | 69.6 | 0.5 |
+| 2026-03 | 85.1 | 82.7 | 98.0 | 68.9 | -0.7 |
+| 2026-04 | 85.8 | 82.8 | 98.2 | 69.6 | 0.7 |
+| 2026-05 | 85.0 | 82.7 | 98.1 | 68.9 | -0.7 |
+| 2026-06 | 84.8 | 83.1 | 98.2 | 68.9 | 0.1 |
+| 2026-07 | 85.2 | 82.8 | 98.2 | 69.0 | 0.1 |
+| 2026-08 | 84.0 | 82.9 | 98.2 | 68.3 | -0.8 |
+| 2026-09 | 85.1 | 82.8 | 98.0 | 68.9 | 0.7 |
+| 2026-10 | 85.3 | 82.8 | 98.0 | 69.0 | 0.1 |
 
 ## <a id="q2"></a>2. Which lines are furthest from world-class OEE (85%), and is it availability, performance or quality?
 
@@ -113,11 +113,11 @@ ORDER BY oee;
 
 | worst_rank | line_id | line_name | availability_pct | performance_pct | quality_pct | oee_pct | gap_to_world_class_pts | weakest_factor |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | L01 | Injection 1 | 75.9 | 73.7 | 96.6 | 54.0 | 31.0 | Performance |
-| 2 | L03 | Blow molding 1 | 86.7 | 82.8 | 98.3 | 70.5 | 14.5 | Performance |
-| 3 | L05 | Caps | 87.1 | 83.5 | 98.8 | 71.9 | 13.1 | Performance |
-| 4 | L02 | Injection 2 | 86.6 | 87.2 | 97.3 | 73.4 | 11.6 | Availability |
-| 5 | L04 | Blow molding 2 | 87.4 | 85.9 | 98.4 | 73.9 | 11.1 | Performance |
+| 1 | L01 | Injection 1 | 74.4 | 73.6 | 96.5 | 52.9 | 32.1 | Performance |
+| 2 | L03 | Blow molding 1 | 86.1 | 82.8 | 98.3 | 70.0 | 15.0 | Performance |
+| 3 | L05 | Caps | 86.7 | 83.4 | 98.8 | 71.5 | 13.5 | Performance |
+| 4 | L02 | Injection 2 | 86.9 | 87.1 | 97.2 | 73.6 | 11.4 | Availability |
+| 5 | L04 | Blow molding 2 | 88.6 | 85.9 | 98.4 | 74.9 | 10.1 | Performance |
 
 ## <a id="q3"></a>3. Which causes make up 80% of unplanned downtime (Pareto)?
 
@@ -156,16 +156,16 @@ ORDER BY minutes DESC;
 
 | reason | category | stops | hours | avg_minutes | cumulative_pct | pareto_group |
 | --- | --- | --- | --- | --- | --- | --- |
-| Mechanical failure | Breakdown | 3486 | 3,461 | 59.6 | 36.9 | Vital few |
-| Changeover (mold / format change) | Changeover | 1463 | 1,742 | 71.4 | 55.5 | Vital few |
-| Electrical / controls failure | Breakdown | 2195 | 1,283 | 35.1 | 69.2 | Vital few |
-| Mold / tooling failure | Breakdown | 858 | 1,101 | 77.0 | 80.9 | Vital few |
-| Jam / misfeed | Jam | 7311 | 814.0 | 6.7 | 89.6 | Useful many |
-| Material shortage (resin / preforms) | Material | 226 | 424.0 | 112.5 | 94.1 | Useful many |
-| Quality hold | Quality | 224 | 280.0 | 74.9 | 97.1 | Useful many |
-| No operator available | Organizational | 191 | 125.0 | 39.4 | 98.5 | Useful many |
-| Utilities (power, compressed air, chiller) | Utilities | 135 | 114.0 | 50.7 | 99.7 | Useful many |
-| Unclassified (no reason entered) | Unclassified | 59 | 30.0 | 30.6 | 100.0 | Useful many |
+| Mechanical failure | Breakdown | 3475 | 3,495 | 60.3 | 36.8 | Vital few |
+| Changeover (mold / format change) | Changeover | 1429 | 1,714 | 72.0 | 54.9 | Vital few |
+| Electrical / controls failure | Breakdown | 2214 | 1,288 | 34.9 | 68.4 | Vital few |
+| Mold / tooling failure | Breakdown | 877 | 1,195 | 81.7 | 81.0 | Vital few |
+| Jam / misfeed | Jam | 7421 | 824.0 | 6.7 | 89.7 | Useful many |
+| Material shortage (resin / preforms) | Material | 221 | 400.0 | 108.7 | 93.9 | Useful many |
+| Quality hold | Quality | 252 | 314.0 | 74.7 | 97.2 | Useful many |
+| No operator available | Organizational | 182 | 119.0 | 39.2 | 98.5 | Useful many |
+| Utilities (power, compressed air, chiller) | Utilities | 134 | 112.0 | 50.3 | 99.7 | Useful many |
+| Unclassified (no reason entered) | Unclassified | 53 | 31.0 | 35.5 | 100.0 | Useful many |
 
 ## <a id="q4"></a>4. Did the SMED (quick changeover) program work? Difference-in-differences against the comparison lines.
 
@@ -218,8 +218,8 @@ WHERE p.smed_group = 'Pilot' AND c.smed_group = 'Comparison';
 
 | metric | pilot_before | pilot_after | comparison_before | comparison_after | diff_in_diff | planned_hours_freed_post |
 | --- | --- | --- | --- | --- | --- | --- |
-| Average changeover (minutes) | 82.5 | 48.4 | 78.4 | 77.7 | -33.4 |  |
-| Changeover share of planned time (%) | 3.63 | 2.03 | 3.5 | 3.61 | -1.7 | 189.0 |
+| Average changeover (minutes) | 82.4 | 48.8 | 80.0 | 76.4 | -30.0 |  |
+| Changeover share of planned time (%) | 3.62 | 2.04 | 3.58 | 3.29 | -1.3 | 144.0 |
 
 ## <a id="q5"></a>5. How reliable is each machine (MTBF / MTTR), and is the old press getting worse?
 
@@ -255,26 +255,26 @@ ORDER BY line_id, half_year;
 
 | line_id | half_year | breakdowns | mtbf_hours | mttr_minutes | mtbf_change_hours |
 | --- | --- | --- | --- | --- | --- |
-| L01 | 2025-H1 | 549 | 4.6 | 54.7 |  |
-| L01 | 2025-H2 | 593 | 4.2 | 55.5 | -0.4 |
-| L01 | 2026-H1 | 674 | 3.8 | 53.7 | -0.5 |
-| L01 | 2026-H2 | 468 | 3.7 | 55.4 | -0.1 |
-| L02 | 2025-H1 | 264 | 10.9 | 54.6 |  |
-| L02 | 2025-H2 | 251 | 11.4 | 56.7 | 0.5 |
-| L02 | 2026-H1 | 219 | 13.3 | 56.1 | 1.9 |
-| L02 | 2026-H2 | 149 | 13.4 | 59.5 | 0.1 |
-| L03 | 2025-H1 | 364 | 7.9 | 45.8 |  |
-| L03 | 2025-H2 | 340 | 8.3 | 50.5 | 0.4 |
-| L03 | 2026-H1 | 358 | 8.1 | 49.1 | -0.3 |
-| L03 | 2026-H2 | 200 | 10.1 | 48.0 | 2.0 |
-| L04 | 2025-H1 | 262 | 11.1 | 52.9 |  |
-| L04 | 2025-H2 | 280 | 10.4 | 52.0 | -0.7 |
-| L04 | 2026-H1 | 259 | 11.3 | 49.9 | 1.0 |
-| L04 | 2026-H2 | 211 | 9.4 | 51.5 | -1.9 |
-| L05 | 2025-H1 | 307 | 9.4 | 59.2 |  |
-| L05 | 2025-H2 | 311 | 9.2 | 55.7 | -0.2 |
-| L05 | 2026-H1 | 288 | 10.2 | 55.8 | 1.0 |
-| L05 | 2026-H2 | 192 | 10.4 | 57.6 | 0.2 |
+| L01 | 2025-H1 | 590 | 4.2 | 56.1 |  |
+| L01 | 2025-H2 | 633 | 3.9 | 57.4 | -0.4 |
+| L01 | 2026-H1 | 633 | 4.0 | 57.4 | 0.1 |
+| L01 | 2026-H2 | 497 | 3.4 | 59.8 | -0.6 |
+| L02 | 2025-H1 | 232 | 12.5 | 55.4 |  |
+| L02 | 2025-H2 | 243 | 11.7 | 58.2 | -0.7 |
+| L02 | 2026-H1 | 210 | 14.0 | 58.9 | 2.2 |
+| L02 | 2026-H2 | 173 | 11.6 | 57.5 | -2.4 |
+| L03 | 2025-H1 | 335 | 8.6 | 48.7 |  |
+| L03 | 2025-H2 | 350 | 8.1 | 46.1 | -0.4 |
+| L03 | 2026-H1 | 369 | 7.8 | 52.2 | -0.4 |
+| L03 | 2026-H2 | 235 | 8.5 | 47.5 | 0.7 |
+| L04 | 2025-H1 | 278 | 10.6 | 47.9 |  |
+| L04 | 2025-H2 | 244 | 12.2 | 48.1 | 1.6 |
+| L04 | 2026-H1 | 262 | 11.2 | 48.8 | -1.0 |
+| L04 | 2026-H2 | 176 | 11.7 | 50.8 | 0.5 |
+| L05 | 2025-H1 | 287 | 10.1 | 57.5 |  |
+| L05 | 2025-H2 | 304 | 9.4 | 55.5 | -0.7 |
+| L05 | 2026-H1 | 307 | 9.4 | 59.6 | 0.1 |
+| L05 | 2026-H2 | 208 | 9.6 | 60.0 | 0.2 |
 
 ## <a id="q6"></a>6. Does the cheaper resin supplier cause more scrap on the injection presses, and does it still pay off?
 
@@ -319,8 +319,8 @@ ORDER BY scrap_pct;
 
 | supplier | avg_moisture_ppm | scrap_pct | price_gtq_per_kg | resin_tonnes | resin_savings_gtq | extra_scrap_cost_gtq |
 | --- | --- | --- | --- | --- | --- | --- |
-| Polímeros Centroamericanos | 29.0 | 2.36 | 11.41 | 6,665 | 0.0 | 0.0 |
-| Resinas del Golfo | 58.0 | 4.22 | 10.68 | 3,939 | 2,860,689 | 822,029 |
+| Polímeros Centroamericanos | 30.0 | 2.36 | 11.39 | 6,205 | 0.0 | 0.0 |
+| Resinas del Golfo | 59.0 | 4.13 | 10.72 | 4,211 | 2,807,526 | 838,861 |
 
 ## <a id="q7"></a>7. Is the night shift less effective, and on which lines?
 
@@ -349,11 +349,11 @@ ORDER BY f.line_id;
 
 | line_id | line_name | oee_morning | oee_afternoon | oee_night | scrap_pct_day | scrap_pct_night |
 | --- | --- | --- | --- | --- | --- | --- |
-| L01 | Injection 1 | 55.4 | 54.7 | 52.1 | 3.12 | 4.11 |
-| L02 | Injection 2 | 74.2 | 74.4 | 71.8 | 2.49 | 3.25 |
-| L03 | Blow molding 1 | 71.2 | 71.5 | 68.9 | 1.61 | 2.03 |
-| L04 | Blow molding 2 | 74.7 | 74.2 | 72.9 | 1.45 | 1.85 |
-| L05 | Caps | 72.0 | 73.2 | 70.5 | 1.06 | 1.35 |
+| L01 | Injection 1 | 54.0 | 52.5 | 52.1 | 3.17 | 4.22 |
+| L02 | Injection 2 | 74.9 | 74.3 | 71.6 | 2.51 | 3.27 |
+| L03 | Blow molding 1 | 70.2 | 71.4 | 68.5 | 1.6 | 2.04 |
+| L04 | Blow molding 2 | 75.8 | 75.8 | 73.1 | 1.45 | 1.85 |
+| L05 | Caps | 72.4 | 72.2 | 69.8 | 1.06 | 1.35 |
 
 ## <a id="q8"></a>8. What is each line's longest streak of consecutive shifts without a breakdown?
 
@@ -397,11 +397,11 @@ ORDER BY b.line_id;
 
 | line_id | longest_streak_shifts | from_date | to_date | pct_shifts_with_breakdown |
 | --- | --- | --- | --- | --- |
-| L01 | 7 | 2025-03-19 | 2025-03-21 | 73.9 |
-| L02 | 12 | 2025-01-06 | 2025-01-09 | 40.6 |
-| L03 | 10 | 2025-03-27 | 2025-03-31 | 53.5 |
-| L04 | 10 | 2025-02-10 | 2025-02-13 | 44.5 |
-| L05 | 10 | 2025-07-09 | 2025-07-12 | 48.2 |
+| L01 | 4 | 2025-08-28 | 2025-08-29 | 75.2 |
+| L02 | 10 | 2026-09-02 | 2026-09-05 | 40.6 |
+| L03 | 10 | 2026-05-09 | 2026-05-13 | 52.5 |
+| L04 | 10 | 2026-10-01 | 2026-10-05 | 43.9 |
+| L05 | 10 | 2025-01-10 | 2025-01-14 | 48.3 |
 
 ## <a id="q9"></a>9. What are the losses worth, and where would one OEE point pay the most?
 
@@ -437,11 +437,11 @@ ORDER BY gtq_per_year_at_best_line_oee DESC;
 
 | line_id | line_name | oee_pct | margin_lost_vs_100pct_oee_m_gtq_per_year | scrap_cost_m_gtq_per_year | gtq_per_oee_point_per_year | gtq_per_year_at_best_line_oee |
 | --- | --- | --- | --- | --- | --- | --- |
-| L01 | Injection 1 | 54.0 | 5.08 | 0.96 | 110,514 | 2,196,905 |
-| L03 | Blow molding 1 | 70.5 | 4.93 | 0.93 | 167,433 | 564,145 |
-| L05 | Caps | 71.9 | 1.47 | 0.17 | 52,344 | 106,047 |
-| L02 | Injection 2 | 73.4 | 2.95 | 1.04 | 110,712 | 53,831 |
-| L04 | Blow molding 2 | 73.9 | 4.42 | 0.89 | 169,408 | 0.0 |
+| L01 | Injection 1 | 52.9 | 5.2 | 0.95 | 110,319 | 2,428,886 |
+| L03 | Blow molding 1 | 70.0 | 5.06 | 0.93 | 168,926 | 819,080 |
+| L05 | Caps | 71.5 | 1.49 | 0.17 | 52,274 | 178,591 |
+| L02 | Injection 2 | 73.6 | 2.9 | 1.03 | 109,437 | 140,630 |
+| L04 | Blow molding 2 | 74.9 | 4.25 | 0.9 | 168,917 | 0.0 |
 
 ## <a id="q10"></a>10. Which product changes take longest on the injection presses, before and after SMED?
 
@@ -473,15 +473,15 @@ ORDER BY avg_minutes_before_smed DESC;
 
 | from_sku | to_sku | weight_gap_g | changeovers | avg_minutes_before_smed | avg_minutes_pilot_after_smed |
 | --- | --- | --- | --- | --- | --- |
-| PF-38G | PF-48G | 10.0 | 20 | 112.7 | 75.6 |
-| PF-24G | PF-48G | 24.0 | 23 | 106.2 | 77.0 |
-| PF-24G | PF-38G | 14.0 | 46 | 105.2 | 45.4 |
-| PF-38G | PF-18G | 20.0 | 91 | 103.5 | 59.6 |
-| PF-18G | PF-38G | 20.0 | 81 | 102.6 | 65.3 |
-| PF-24G | PF-18G | 6.0 | 80 | 102.1 | 58.7 |
-| PF-18G | PF-24G | 6.0 | 92 | 101.6 | 48.7 |
-| PF-18G | PF-48G | 30.0 | 31 | 98.0 | 79.7 |
-| PF-48G | PF-18G | 30.0 | 31 | 97.7 | 75.2 |
-| PF-38G | PF-24G | 14.0 | 39 | 93.0 | 46.7 |
-| PF-48G | PF-24G | 24.0 | 19 | 90.7 | 55.5 |
-| PF-48G | PF-38G | 10.0 | 25 | 90.6 | 66.1 |
+| PF-48G | PF-18G | 30.0 | 33 | 120.5 | 77.7 |
+| PF-48G | PF-24G | 24.0 | 21 | 115.2 | 44.7 |
+| PF-24G | PF-38G | 14.0 | 49 | 110.0 | 57.5 |
+| PF-24G | PF-48G | 24.0 | 14 | 106.4 | 52.5 |
+| PF-38G | PF-18G | 20.0 | 83 | 105.9 | 64.2 |
+| PF-38G | PF-24G | 14.0 | 56 | 105.8 | 56.7 |
+| PF-18G | PF-38G | 20.0 | 93 | 103.8 | 65.0 |
+| PF-38G | PF-48G | 10.0 | 26 | 103.6 | 39.7 |
+| PF-24G | PF-18G | 6.0 | 74 | 99.9 | 59.3 |
+| PF-18G | PF-48G | 30.0 | 39 | 98.6 | 56.9 |
+| PF-18G | PF-24G | 6.0 | 61 | 98.4 | 56.6 |
+| PF-48G | PF-38G | 10.0 | 24 | 95.0 | 53.6 |

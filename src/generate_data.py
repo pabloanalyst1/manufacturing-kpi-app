@@ -24,6 +24,7 @@ Same seed -> same data, so every number in the README is reproducible.
 from __future__ import annotations
 
 import copy
+import math
 
 import numpy as np
 import pandas as pd
@@ -118,11 +119,11 @@ def generate_resin_lots(days: pd.DatetimeIndex, rng: np.random.Generator) -> pd.
     for i, d in enumerate(days[::4]):
         name, _, price, moisture, _ = PET_SUPPLIERS[rng.choice(2, p=[s[1] for s in PET_SUPPLIERS])]
         rows.append((f"PET-{d:%y%m%d}-{i:03d}", "PET", name, d - pd.Timedelta(days=int(rng.integers(3, 12))),
-                     round(price * rng.uniform(0.98, 1.02), 2), round(rng.normal(moisture, 6))))
+                     round(price * rng.uniform(0.98, 1.02), 2), round(_normal(rng, moisture, 6))))
     for i, d in enumerate(days[::7]):
         rows.append((f"HDPE-{d:%y%m%d}-{i:03d}", "HDPE", "Polímeros Centroamericanos",
                      d - pd.Timedelta(days=int(rng.integers(3, 12))), round(12.10 * rng.uniform(0.98, 1.02), 2),
-                     round(rng.normal(20, 4))))
+                     round(_normal(rng, 20, 4))))
     lots = pd.DataFrame(rows, columns=["lot_id", "resin_type", "supplier", "received_date", "price_gtq_per_kg", "moisture_ppm"])
     lots["first_use"] = [d for d in days[::4]] + [d for d in days[::7]]
     return lots
@@ -139,8 +140,72 @@ def _lot_lookup(lots: pd.DataFrame, days: pd.DatetimeIndex) -> dict[tuple[str, p
     return lookup
 
 
+# Platform-independent draws -----------------------------------------------------------------------
+# numpy's normal / lognormal / Poisson / Dirichlet samplers use math functions (log, exp, cos) whose last bit can
+# differ between processors (Apple Silicon vs Intel / Linux). The helpers below draw only uniforms, in a fixed
+# number per call, and round their results, so the same seed gives the same data on every machine.
+
+def _q(x: float, digits: int = 6) -> float:
+    return round(float(x), digits)
+
+
+def _normal(rng: np.random.Generator, mu: float = 0.0, sigma: float = 1.0) -> float:
+    """Box-Muller: always two uniforms."""
+    u1, u2 = rng.random(2)
+    z = math.sqrt(-2.0 * math.log(1.0 - u1)) * math.cos(2.0 * math.pi * u2)
+    return _q(mu + sigma * z)
+
+
 def _lognormal(rng: np.random.Generator, mean: float, sigma: float = 0.5) -> float:
-    return float(rng.lognormal(np.log(mean) - sigma ** 2 / 2, sigma))
+    """Lognormal with the given mean, rounded to the second (durations in minutes)."""
+    z = _normal(rng)
+    return _minutes(math.exp(math.log(mean) - sigma ** 2 / 2 + sigma * z))
+
+
+def _minutes(x: float) -> float:
+    """Round a duration to whole seconds."""
+    return round(float(x) * 60) / 60
+
+
+def _poisson(rng: np.random.Generator, lam: float) -> int:
+    """Inversion with a single uniform."""
+    u, k = rng.random(), 0
+    p = math.exp(-lam)
+    cdf = p
+    while u > cdf and k < 1000:
+        k += 1
+        p *= lam / k
+        cdf += p
+    return k
+
+
+def _split(rng: np.random.Generator, total: float, n: int) -> list[float]:
+    """Split a total into n random parts (a flat Dirichlet), rounded to seconds."""
+    e = [_q(-math.log(1.0 - u), 9) for u in rng.random(n)]
+    s = sum(e)
+    return [_minutes(total * x / s) for x in e]
+
+
+def _split_fixed(parts: list[float], total: float) -> list[float]:
+    """Rescale parts (some zeroed) to the total, rounded to seconds; the last non-zero part absorbs rounding."""
+    s = sum(parts)
+    out = [_minutes(total * x / s) for x in parts]
+    idx = max(i for i, x in enumerate(out) if x > 0)
+    out[idx] = _minutes(out[idx] + total - sum(out))
+    return out
+
+
+def _allocate(rng: np.random.Generator, units: int, weights: dict[str, float]) -> dict[str, int]:
+    """Random whole-unit split of scrap across defects (largest remainder)."""
+    names = list(weights)
+    w = [_q(weights[n] * -math.log(1.0 - u), 9) for n, u in zip(names, rng.random(len(names)))]
+    total = sum(w)
+    raw = [units * x / total for x in w]
+    out = [int(r) for r in raw]
+    order = sorted(range(len(names)), key=lambda i: (-(raw[i] - out[i]), i))
+    for i in order[: units - sum(out)]:
+        out[i] += 1
+    return {n: k for n, k in zip(names, out) if k > 0}
 
 
 def _smed_factor(line_id: str, day: pd.Timestamp) -> float:
@@ -159,10 +224,10 @@ def _simulate_shift(line_id: str, day: pd.Timestamp, shift: str, state: dict, pl
     events: list[dict] = []
 
     # Planned stops
-    events.append({"code": "BRK", "minutes": float(rng.uniform(28, 32))})
+    events.append({"code": "BRK", "minutes": _minutes(rng.uniform(28, 32))})
     is_pm = shift == "A" and (day - state["pm_anchor"]).days % 14 == 0
     if is_pm:
-        events.append({"code": "PM", "minutes": float(rng.uniform(220, 260)), "first": True})
+        events.append({"code": "PM", "minutes": _minutes(rng.uniform(220, 260)), "first": True})
     elif rng.random() < (0.05 if month in (12, 1) else 0.01):
         events.append({"code": "NOORD", "minutes": 240.0})
 
@@ -180,25 +245,25 @@ def _simulate_shift(line_id: str, day: pd.Timestamp, shift: str, state: dict, pl
 
     # Breakdowns: the old press (L01) gets worse as it ages
     aging = 1 + 0.015 * max(0, (day.year - 2025) * 12 + month - 1) if install_year < 2013 else 1.0
-    for _ in range(rng.poisson(hours * 0.09 * fail_mult * aging)):
+    for _ in range(_poisson(rng, _q(hours * 0.09 * fail_mult * aging))):
         kinds = ["MECH", "ELEC", "MOLD"] if process != "Blow molding" else ["MECH", "ELEC"]
         probs = [0.5, 0.3, 0.2] if process != "Blow molding" else [0.6, 0.4]
         code = kinds[rng.choice(len(kinds), p=probs)]
         events.append({"code": code, "minutes": _lognormal(rng, {"MECH": 60, "ELEC": 35, "MOLD": 80}[code], 0.6)})
 
     # Jams: mostly minor stops (< 5 minutes)
-    for _ in range(rng.poisson(hours * 0.6 * minor_mult)):
+    for _ in range(_poisson(rng, _q(hours * 0.6 * minor_mult))):
         events.append({"code": "JAM", "minutes": _lognormal(rng, 3.4, 0.5)})
 
     # Material shortages: rare, except during the supply disruption
     in_disruption = SUPPLY_DISRUPTION[0] <= day.strftime("%Y-%m-%d") <= SUPPLY_DISRUPTION[1]
     p_mat = (0.30 if process != "Blow molding" else 0.22) if in_disruption else 0.01
     if rng.random() < p_mat:
-        events.append({"code": "MAT", "minutes": float(rng.uniform(60, 220) if in_disruption else rng.uniform(20, 80))})
+        events.append({"code": "MAT", "minutes": _minutes(rng.uniform(60, 220) if in_disruption else rng.uniform(20, 80))})
     if rng.random() < 0.03:
-        events.append({"code": "QH", "minutes": float(rng.uniform(30, 120))})
+        events.append({"code": "QH", "minutes": _minutes(rng.uniform(30, 120))})
     if rng.random() < (0.05 if shift == "C" else 0.01):
-        events.append({"code": "OPR", "minutes": float(rng.uniform(20, 60))})
+        events.append({"code": "OPR", "minutes": _minutes(rng.uniform(20, 60))})
     if plant.get((day, shift)):
         events.append({"code": "UTIL", "minutes": plant[(day, shift)]})
 
@@ -208,7 +273,7 @@ def _simulate_shift(line_id: str, day: pd.Timestamp, shift: str, state: dict, pl
         scale = (SHIFT_MINUTES - 20 - planned) / (total - planned)
         for e in events:
             if e["code"] not in ("BRK", "PM", "NOORD"):
-                e["minutes"] *= scale
+                e["minutes"] = _minutes(e["minutes"] * scale)
 
     # Place stops on the timeline: PM first, the rest in random order with random running gaps
     first = [e for e in events if e.get("first")]
@@ -216,14 +281,14 @@ def _simulate_shift(line_id: str, day: pd.Timestamp, shift: str, state: dict, pl
     rest = [rest[i] for i in rng.permutation(len(rest))]
     ordered = first + rest
     free = SHIFT_MINUTES - sum(e["minutes"] for e in ordered)
-    gaps = rng.dirichlet(np.ones(len(ordered) + 1)) * free
+    gaps = _split(rng, free, len(ordered) + 1)
     if first:
         gaps[0] = 0.0
     if rng.random() < 0.03:
         gaps[-1] = 0.0  # the last stop was still open when the shift ended
-    gaps = gaps / gaps.sum() * free
+    gaps = _split_fixed(gaps, free)
 
-    speed_now = speed * rng.normal(1, 0.02) * (0.98 if shift == "C" else 1.0)
+    speed_now = _q(speed * _normal(rng, 1, 0.02) * (0.98 if shift == "C" else 1.0))
     t, sku = 0.0, state["sku"]
     produced: dict[str, float] = {}
     after_co = None
@@ -257,15 +322,11 @@ def _simulate_shift(line_id: str, day: pd.Timestamp, shift: str, state: dict, pl
         rate *= 1.3 if shift == "C" else 1.0
         rate *= 1.12 if (_rainy(month) and process == "Injection molding") else 1.0
         rate += 0.008 if s in co_skus else 0.0  # start-up scrap after a changeover
-        scrap = int(min(total_units, round(total_units * rate * rng.lognormal(0, 0.25))))
+        scrap = int(min(total_units, round(total_units * _q(rate * math.exp(0.25 * _normal(rng)), 9))))
         weights = dict(DEFECTS[process])
         if supplier_mult > 1:
             weights["Splay / bubbles"] *= 4
-        names = list(weights)
-        p = np.array([weights[n] for n in names])
-        split = rng.multinomial(scrap, p / p.sum())
-        production.append({"sku": s, "good": total_units - scrap,
-                           "defects": {n: int(k) for n, k in zip(names, split) if k > 0}})
+        production.append({"sku": s, "good": total_units - scrap, "defects": _allocate(rng, scrap, weights)})
 
     return {"line_id": line_id, "day": day, "shift": shift, "events": ordered, "production": production,
             "resin_lot": None if lot is None else lot["lot_id"], "supervisor": SUPERVISORS[rng.integers(len(SUPERVISORS))],
@@ -329,19 +390,23 @@ def to_document(sim: dict) -> dict:
     return doc
 
 
-def generate_shift_documents(days: pd.DatetimeIndex, lots: pd.DataFrame, rng: np.random.Generator) -> list[dict]:
+def generate_shift_documents(days: pd.DatetimeIndex, lots: pd.DataFrame, seed: int) -> list[dict]:
+    """Each line-shift gets its own random stream (seeded by seed, line, day and shift), so a rounding difference
+    on one machine could only ever affect that shift, never the rest of the data."""
     # Plant-wide power cuts: more frequent in the rainy season
     plant = {}
     for d in days:
+        rng = np.random.default_rng([seed, 99, d.toordinal()])
         for s in SHIFTS:
             if rng.random() < (0.025 if _rainy(d.month) else 0.006):
-                plant[(d, s)] = float(rng.uniform(15, 90))
+                plant[(d, s)] = _minutes(rng.uniform(15, 90))
     lookup = _lot_lookup(lots, days)
     docs = []
     for i, (line_id, *_rest) in enumerate(LINES):
         state = {"sku": SKUS_BY_PROCESS[LINE[line_id][2]][0], "pm_anchor": days[0] + pd.Timedelta(days=2 * i)}
         for d in days:
-            for s in SHIFTS:
+            for k, s in enumerate(SHIFTS):
+                rng = np.random.default_rng([seed, i, d.toordinal(), k])
                 docs.append(to_document(_simulate_shift(line_id, d, s, state, plant, lookup, rng)))
     return docs
 
@@ -428,7 +493,7 @@ def generate_all(seed: int = 42, start: str = START_DATE, end: str = END_DATE,
     rng = np.random.default_rng(seed)
     days = shift_calendar(start, end)
     lots = generate_resin_lots(days, rng)
-    docs = generate_shift_documents(days, lots, rng)
+    docs = generate_shift_documents(days, lots, seed)
     lots = lots.drop(columns="first_use")
     lots["received_date"] = pd.to_datetime(lots["received_date"]).dt.strftime("%Y-%m-%d")
     if messy:

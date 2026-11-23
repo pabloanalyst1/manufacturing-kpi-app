@@ -1,13 +1,13 @@
 ord,kpi,unit,current_period,current_value,prior_year_value,change
-1,OEE,ratio,2026 YTD,0.6941,0.68,0.014
-2,Availability,ratio,2026 YTD,0.8554,0.8384,0.017
-3,Performance,ratio,2026 YTD,0.8289,0.8282,0.0007
-4,Quality,ratio,2026 YTD,0.9811,0.9817,-0.0005
-5,Good units,millions,2026 YTD,646.9489,623.3513,23.5977
-6,Scrap rate,ratio,2026 YTD,0.0189,0.0183,0.0005
-7,Scrap cost,GTQ,2026 YTD,3405406.7,3289538.25,115868.45
-8,Unplanned downtime,hours,2026 YTD,4052.9177,4528.4685,-475.5508
-9,MTBF,hours,2026 YTD,7.9467,7.9555,-0.0088
-10,MTTR,minutes,2026 YTD,53.4635,53.7184,-0.2548
-11,Average changeover,minutes,2026 YTD,63.4004,78.2279,-14.8275
-12,Margin lost vs 100% OEE,GTQ,2026 YTD,15375510.74,16156227.29,-780716.55
+1,OEE,ratio,2026 YTD,0.6901,0.6795,0.0105
+2,Availability,ratio,2026 YTD,0.8511,0.8379,0.0132
+3,Performance,ratio,2026 YTD,0.8283,0.8281,0.0002
+4,Quality,ratio,2026 YTD,0.981,0.9815,-0.0005
+5,Good units,millions,2026 YTD,634.1741,631.15,3.024
+6,Scrap rate,ratio,2026 YTD,0.019,0.0185,0.0005
+7,Scrap cost,GTQ,2026 YTD,3393271.52,3273305.64,119965.88
+8,Unplanned downtime,hours,2026 YTD,4178.6575,4547.792,-369.1345
+9,MTBF,hours,2026 YTD,7.7809,8.0152,-0.2343
+10,MTTR,minutes,2026 YTD,55.7968,53.9936,1.8033
+11,Average changeover,minutes,2026 YTD,63.1077,79.7068,-16.5991
+12,Margin lost vs 100% OEE,GTQ,2026 YTD,15501240.38,16098606.23,-597365.85

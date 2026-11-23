@@ -1,5 +1,4 @@
 # Exact versions, validated in CI on Python 3.12 and 3.14.
-# numpy and pandas are pinned so the simulated data (and every number in the README) is identical on any machine.
 numpy==2.5.5
 pandas==3.1.1
 matplotlib==3.11.2
