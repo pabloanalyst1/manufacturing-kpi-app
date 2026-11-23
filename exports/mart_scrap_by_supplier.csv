@@ -1,0 +1,6 @@
+process,supplier,lots,shifts,total_units,scrap_units,scrap_rate,splay_rate,avg_moisture_ppm,resin_tonnes,avg_price_gtq_per_kg,resin_cost_gtq,scrap_cost_gtq
+Compression molding,Polímeros Centroamericanos,80,1671,528268440,6100637,0.0115,0.0,20.0,1291.8,12.12,15662212.0,309824.0
+Compression molding,Unknown (lot not scanned),1,4,1071574,14829,0.0138,0.0,,2.6,,,739.0
+Injection molding,Polímeros Centroamericanos,88,2104,247447715,5846698,0.0236,0.0047,29.0,6664.7,11.41,76051778.0,1771907.0
+Injection molding,Resinas del Golfo,52,1234,140971357,5950001,0.0422,0.0211,58.0,3939.0,10.68,42087144.0,1867443.0
+Injection molding,Unknown (lot not scanned),1,16,1880748,65262,0.0347,0.0137,,51.5,,,21831.0

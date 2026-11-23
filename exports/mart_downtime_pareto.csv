@@ -1,0 +1,11 @@
+rank,reason_code,reason,category,stops,hours,avg_minutes,share,cumulative_share
+1,MECH,Mechanical failure,Breakdown,3486,3460.5,59.6,0.3692,0.3692
+2,CO,Changeover (mold / format change),Changeover,1463,1741.8,71.4,0.1858,0.555
+3,ELEC,Electrical / controls failure,Breakdown,2195,1283.1,35.1,0.1369,0.6919
+4,MOLD,Mold / tooling failure,Breakdown,858,1101.1,77.0,0.1175,0.8094
+5,JAM,Jam / misfeed,Jam,7311,814.0,6.7,0.0868,0.8962
+6,MAT,Material shortage (resin / preforms),Material,226,423.7,112.5,0.0452,0.9414
+7,QH,Quality hold,Quality,224,279.7,74.9,0.0298,0.9713
+8,OPR,No operator available,Organizational,191,125.3,39.4,0.0134,0.9846
+9,UTIL,"Utilities (power, compressed air, chiller)",Utilities,135,114.0,50.7,0.0122,0.9968
+10,UNK,Unclassified (no reason entered),Unclassified,59,30.1,30.6,0.0032,1.0

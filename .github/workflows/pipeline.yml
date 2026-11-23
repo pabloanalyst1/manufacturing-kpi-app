@@ -1,0 +1,55 @@
+name: Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-and-run:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.14"]
+
+    # The MES documents land in a real MongoDB, as they would in production
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'db.runCommand({ping: 1})'"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+
+    env:
+      MONGO_URI: mongodb://localhost:27017
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests (incl. MongoDB aggregation vs Python, and the Streamlit app)
+        run: python -m pytest -v
+
+      - name: Run pipeline against MongoDB
+        run: python run_pipeline.py --require-mongo
+
+      - name: Run SQL case study queries
+        run: python scripts/run_case_study.py
+
+      - name: Upload dashboard exports
+        if: matrix.python-version == '3.14'
+        uses: actions/upload-artifact@v4
+        with:
+          name: exports
+          path: exports/*.csv

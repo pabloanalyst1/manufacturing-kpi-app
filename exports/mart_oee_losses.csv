@@ -1,0 +1,43 @@
+line_id,step_order,loss,oee_factor,hours,share_of_planned_time
+L01,1,Breakdowns,Availability,2084.0,0.1694
+L01,2,Changeovers,Availability,403.9,0.0328
+L01,3,"Other stops (material, quality hold, staff, utilities)",Availability,474.9,0.0386
+L01,4,Minor stops (< 5 min),Performance,639.5,0.052
+L01,5,Reduced speed,Performance,1813.5,0.1475
+L01,6,Scrap,Quality,237.4,0.0193
+L01,7,Fully productive time (OEE),OEE,6645.5,0.5403
+L02,1,Breakdowns,Availability,830.2,0.0674
+L02,2,Changeovers,Availability,489.3,0.0398
+L02,3,"Other stops (material, quality hold, staff, utilities)",Availability,333.4,0.0271
+L02,4,Minor stops (< 5 min),Performance,230.3,0.0187
+L02,5,Reduced speed,Performance,1132.4,0.092
+L02,6,Scrap,Quality,255.2,0.0207
+L02,7,Fully productive time (OEE),OEE,9037.9,0.7343
+L03,1,Breakdowns,Availability,1016.7,0.083
+L03,2,Changeovers,Availability,309.0,0.0252
+L03,3,"Other stops (material, quality hold, staff, utilities)",Availability,304.1,0.0248
+L03,4,Minor stops (< 5 min),Performance,287.6,0.0235
+L03,5,Reduced speed,Performance,1538.7,0.1256
+L03,6,Scrap,Quality,153.9,0.0126
+L03,7,Fully productive time (OEE),OEE,8645.3,0.7054
+L04,1,Breakdowns,Availability,870.1,0.0708
+L04,2,Changeovers,Availability,384.3,0.0313
+L04,3,"Other stops (material, quality hold, staff, utilities)",Availability,290.2,0.0236
+L04,4,Minor stops (< 5 min),Performance,261.7,0.0213
+L04,5,Reduced speed,Performance,1253.2,0.102
+L04,6,Scrap,Quality,146.3,0.0119
+L04,7,Fully productive time (OEE),OEE,9083.4,0.7391
+L05,1,Breakdowns,Availability,1043.8,0.0851
+L05,2,Changeovers,Availability,155.3,0.0127
+L05,3,"Other stops (material, quality hold, staff, utilities)",Availability,384.1,0.0313
+L05,4,Minor stops (< 5 min),Performance,464.1,0.0378
+L05,5,Reduced speed,Performance,1299.7,0.1059
+L05,6,Scrap,Quality,103.2,0.0084
+L05,7,Fully productive time (OEE),OEE,8822.4,0.7189
+Plant,1,Breakdowns,Availability,5844.7,0.0952
+Plant,2,Changeovers,Availability,1741.8,0.0284
+Plant,3,"Other stops (material, quality hold, staff, utilities)",Availability,1786.8,0.0291
+Plant,4,Minor stops (< 5 min),Performance,1883.2,0.0307
+Plant,5,Reduced speed,Performance,7037.6,0.1146
+Plant,6,Scrap,Quality,896.0,0.0146
+Plant,7,Fully productive time (OEE),OEE,42234.5,0.6876
