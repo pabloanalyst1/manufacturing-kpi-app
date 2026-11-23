@@ -203,6 +203,10 @@ python scripts/make_readme_charts.py # refreshes the README charts
 streamlit run app/streamlit_app.py   # the app
 ```
 
+Package versions are pinned in `requirements.txt`: the simulator draws random numbers through numpy and pandas,
+so other versions can produce slightly different data. With the pinned versions and the default seed you get
+exactly the numbers in this README (8,382 line-shifts).
+
 Without MongoDB the pipeline logs a warning and flattens the documents in Python. To use another server,
 set `MONGO_URI` or pass `--mongo-uri`.
 
